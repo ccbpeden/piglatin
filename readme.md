@@ -7,14 +7,15 @@
 ## Description
 
 _{a webpage that evaluates a string to pass the following spec tests.
-1. recognize a string with no content and returns an alert
-2. recognize and ignore non-alphabetical content
-3. recognize a word beginning with a vowel and add ay to end
-4. recognize a word beginning with a trigraph and move to end followed by ay
-5. recognize a word beginning with a single consonant and move to end followed by ay
-6
-6. recognize vowels regardless of case
-7. ignore non-alphabetical characters}_
+* recognize a string with no content and returns an alert
+* recognize and deal appropriately with  non-alphabetical content
+* add an ay to end of a word
+* recognize a word beginning with a trigraph and move to end followed by ay
+* recognize a word beginning with a digraph and move to end followed by ay
+* recognize a word beginning with a single consonant and move to end followed by ay
+* recognize a word beginning with a vowel and adds way to the end.
+* recognize a word regardless of case
+* recognize multiple words regardless of case
 
 ##Setup/Installation Requirements
 

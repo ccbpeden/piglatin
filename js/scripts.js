@@ -1,44 +1,46 @@
-var testVowels = ["a", "e", "i", "o", "u", "y", "A", "E", "I", "O", "U"]
+var trigraph = ['que','squ','str','str','thr','spr','sph','shr','scr','sch']
 
-// var filterFunction = function() {
-//   return value === testVowels[index];
-// }
+var digraph = ['bl','br','ch','cl','cr','dr','fl','fr','gl','gr','pl','pr','sc','sh','sk','sl','sm','sn','sp','st','sw','th','tr','tw','wh','wr']
 
 var stringSplitter = function(inputString) {
-  return inputString.split("");
+  return inputString.split(" ");
+}
+
+var punctTest = function(splitStrings){
+
+}
+
+var trigraphTest = function(punctTest){
+
+};
+
+var digraphTest = function(punctTest){
+
+}
+
+var vowelTest = function(punctTest){
+
+}
+
+var consonantTest = function(punctTest){
+
 }
 
 
-// var isEqualto = function(currentVowel){
-  // return value === currentVowel;
-// }
 
-var vowelCounter = function(splitStrings) {
- var currentLetters = splitStrings.map(function(splitString){
-   console.log("splitString is " + splitString);
-    for(var index = 0; index < testVowels.length; index += 1) {
-      console.log("testVowels at " + testVowels[index]);
-      var currentVowel = testVowels[index];
-      if (splitString === currentVowel )
-      return splitString;
-    };
-  });
-  currentLetters = currentLetters.filter(function(currentLetter){
-    return currentLetter;
-  });
-    console.log("currentLetters is " + currentLetters);
-  return currentLetters.length;
-};
+stringSplitter, punctTest, if trigraph yes { final logic} else if digraph yes { final logic} else if consonant yes {final logic} else if vowel yes {vowelfinallogic} else errorcondition.
+
 
 
 $(document).ready(function() {
-  $("form#vowelFinder").submit(function(event) {
+  $("form#pigLatin").submit(function(event) {
     event.preventDefault();
     var inputString = ($("input#inputString").val());
-    var splitStrings = stringSplitter(inputString);
-    console.log("splitStrings set to " + splitStrings);
-    var vowelCount = vowelCounter(splitStrings);
-    console.log("vowelCount set to " + vowelCount)
-    $("#result").text(vowelCount);
+    if (inputString){
+      console.log('inputString set to ' + inputString);
+      var splitStrings = stringSplitter(inputString);
+      console.log('splitStrings set to ' + splitStrings);
+      $("#result").text(result);
+    } else alert('please enter text');
   });
 });
