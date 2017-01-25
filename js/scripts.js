@@ -1,7 +1,3 @@
-var initClusters = ["trigraph", "digraph", "consonant", "vowel"]
-
-var clusterCounter = ["2", "1", "0", "0"]
-
 var trigraphs = ['squ','str','str','thr','spr','sph','shr','scr','sch']
 
 var digraphs = ['bl','br','ch','cl','cr','dr','fl','fr','gl','gr','pl','pr','sc','sh','sk','sl','sm','sn','sp','st','sw','th','tr','tw','wh','wr','qu']
@@ -9,7 +5,8 @@ var digraphs = ['bl','br','ch','cl','cr','dr','fl','fr','gl','gr','pl','pr','sc'
 var vowels = ["a", "e", "i", "o", "u", "y"]
 
 var consonants = ["b","c","d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"]
-var finalPunct
+
+var firstChar
 
 var stringSplitter = function(inputString) {
   return inputString.split(" ");
@@ -26,53 +23,49 @@ var punctTest = function(splitStrings){
   };
 };
 
-// var trigraphTest = function(splitStrings){
-  // var firstChar = splitStrings[0].slice(0,2)
- // for(var wordIndex = 0, wordIndex<splitStrings.length, WordIndex+=1){
-  //  for(var clusterIndex = 0, initSound!=null, clusterIndex+=1){
-    //  var initCluster = splitStrings[wordIndex].slice(0,[clusterIndex])
-
-//      if initClust
-//    }
-//  }
-//  var initSound = splitStrings[index]
-
-//  var trigraph = splitStrings[0].slice(0,2)
-//  console.log("trigraph is equal to " + trigraph)
-// };
-
-var digraphTest = function(punctTest){
-
-}
 
 var vowelTest = function(splitStrings){
-  var firstChar = splitStrings[0].slice(0,1);
-  for(var index = 0; index < vowels.length; index+=1)
+  firstChar = splitStrings[0].slice(0,1);
   console.log("firstChar is " + firstChar)
-  if (firstChar === vowels[index]) {
-    console.log("vowel match")
-    splitStrings[index] = splitStrings[index] + "way";
-    return splitStrings[index];
-  } else {
-    var firstThree = splitStrings[0].slice(0,2);
-    for(var index = 0; index < trigraphs.length; index+=1)
-    if (firstThree === trigraphs[index]){
-      console.log("trigraph match")
-      var string = trigraphs[index];
-      trigraphs[index] = string.substr(3) + string.substr(0,3) + "ay";
-      var newString = trigraphs[index];
-      return newString;
-      console.log(newString);
+  for(var i = 0; i < vowels.length; i++)
+    if (vowels[i] == firstChar)
+    {
+    return firstChar;
     };
+}
+
+var trigraphTest = function(splitStrings){
+  firstChar = splitStrings[0].slice(0,3);
+  console.log("first3 characters are " + firstChar)
+  for(var i = 0; i < trigraphs.length; i++)
+    if (trigraphs[i] == firstChar)
+    {
+    return firstChar;
+  } else
+  {
+    return false
   };
 }
 
-var consonantTest = function(punctTest){
-
+var digraphTest = function(splitStrings){
+  firstChar = splitStrings[0].slice(0,2);
+  console.log("first2 characters are " + firstChar)
+  for(var i = 0; i < digraphs.length; i++)
+    if (digraphs[i] == firstChar)
+    {
+    return firstChar;
+    };
 }
 
-
-
+var compileTests = function(splitStrings){
+  if ((trigraphTest(splitStrings)===false){
+    if((digraphTest(splitStrings))===false){
+      if((vowelTest(splitStrings))===false){
+        firstChar = splitStrings[0].slice(0,1)
+      }
+    }
+  }
+}
 //stringSplitter, punctTest, if trigraph yes { final logic} else if digraph yes { final logic} else if consonant yes {final logic} else if vowel yes {vowelfinallogic} else errorcondition.
 
 
@@ -85,8 +78,10 @@ $(document).ready(function() {
 //      console.log('inputString set to ' + inputString);
       var splitStrings = stringSplitter(inputString);
 //      console.log('splitStrings set to ' + splitStrings);
-     finalPunct = punctTest(splitStrings);
+     var finalPunct = punctTest(splitStrings);
       var result = vowelTest(splitStrings);
+      var result = trigraphTest(splitStrings);
+      var result = digraphTest(splitStrings);
       console.log(result);
       $("#result").text(result);
     } else alert('please enter text');
